@@ -112,3 +112,7 @@ ui-portfolio/
 - **JavaScript (ES6+)**
 - **Intersection Observer API**
 
+## Contributors 
+- **Brian Ouko**
+- **Mmabatho Naseba**
+- **Abiodun  Moses Kajogbola** 
