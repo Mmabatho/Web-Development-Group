@@ -10,29 +10,25 @@
   <header>
     <div class="container header-container">
       <div class="logo">UI Portfolio</div>
-      <nav ariel-label="Main Navigation" class="nav">
-        <ul class="nav-links">
-          <li><a href="#">Home</a></li>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Services</a></li>
-          <li><a href="#">Blog</a></li>
-          <li><a href="#">Pages</a></li>
-          <li><a href="#">Contact</a></li>
-        </ul>
-
-        <div class="nav-actions">
-          <button class="btn btn-primary">Hire Me</button>
-          <div class="nav-icons">
-            <button class="icon-btn" aria-label="Search">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-              </svg>
-            </button>
-            <button class="icon-btn" aria-label="Toggle dark mode">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
-              </svg>
-            </button>
+      <nav>
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Services</a>
+        <a href="#">Blog</a>
+        <a href="#">Pages</a>
+        <a href="#">Contact</a>
+        <a href="#" class="btn btn-primary">Hire Me</a>
+        <div class="nav-icons">
+          <button class="icon-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+          </button>
+          <button class="icon-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+            </svg>
+          </button>
         </div>
       </nav>
     </div>
@@ -43,7 +39,9 @@
     <div class="container hero-container">
       <div>
         <h2>Hi, I'm John Watson</h2>
-        <h1>Web Developer</h1>
+        <h1>
+          <span class="typed-text"></span><span class="cursor">&nbsp;</span>
+        </h1>
         <p>I love Graphic design and Photography and have been working on my portfolio since 2016. I Can give your business a new Creative start right away!</p>
         <div class="hero-buttons">
           <a href="#" class="btn btn-primary">Hire Me</a>
@@ -273,25 +271,67 @@
       </div>
     </div>
 
-    <div class="clients">
-      <div class="container">
-        <div class="clients-grid">
-          <div class="client-logo">
-            <img src="images/pict1.png" alt="Client 1">
-          </div>
-          <div class="client-logo">
-            <img src="images/pict2.png" alt="Client 2">
-          </div>
-          <div class="client-logo">
-            <img src="images/pict3.png" alt="Client 3">
-          </div>
-          <div class="client-logo">
-            <img src="images/pict4.png" alt="Client 4">
-          </div>
-        </div>
+    <div class="logo-container">
+      <div class="logo-item">
+        <img src="images/pict1.png"100% Gluten Free">
+      </div>
+      <div class="logo-item">
+        <img src="images/pict2.png"Cosmetics">
+      </div>
+      <div class="logo-item">
+        <img src="images/pict3.png" alt="Massage & Spa">
+      </div>
+      <div class="logo-item">
+        <img src="images/pict4.png" alt="Butchery">
       </div>
     </div>
   </section>
+<!-- Typing Animation Script -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const typedTextSpan = document.querySelector(".typed-text");
+      const cursorSpan = document.querySelector(".cursor");
+
+      const textArray = ["Web Designer", "Web Developer", "Photographer ", "Freelancer"];
+      const typingDelay = 200;
+      const erasingDelay = 10;
+      const newTextDelay = 100; // Delay between current and next text
+      let textArrayIndex = 0;
+      let charIndex = 0;
+
+      function type() {
+        if (charIndex < textArray[textArrayIndex].length) {
+          if (!cursorSpan.classList.contains("typing")) cursorSpan.classList.add("typing");
+          typedTextSpan.textContent += textArray[textArrayIndex].charAt(charIndex);
+          charIndex++;
+          setTimeout(type, typingDelay);
+        } else {
+          cursorSpan.classList.remove("typing");
+          setTimeout(erase, newTextDelay);
+        }
+      }
+
+      function erase() {
+        if (charIndex > 0) {
+          // add class 'typing' if there's none
+          if (!cursorSpan.classList.contains("typing")) {
+            cursorSpan.classList.add("typing");
+          }
+          typedTextSpan.textContent = textArray[textArrayIndex].substring(0, charIndex - 1);
+          charIndex--;
+          setTimeout(erase, erasingDelay);
+        } else {
+          cursorSpan.classList.remove("typing");
+          textArrayIndex++;
+          if (textArrayIndex >= textArray.length) textArrayIndex = 0;
+          setTimeout(type, typingDelay + 250);
+        }
+      }
+
+      // On DOM Load initiate the effect
+      if (textArray.length) setTimeout(type, newTextDelay + 250);
+    });
+  </script>
 
   <!-- Footer -->
   <footer>
@@ -359,5 +399,7 @@
       </div>
     </div>
   </footer>
+    <!-- Link to external JavaScript file -->
+    <script src="script.js"></script>
 </body>
 </html>

@@ -65,6 +65,8 @@ window.addEventListener('scroll', () => {
         navbar.style.boxShadow = 'none';
     }
 });
+// HIGHLIGHT: Change the text array here to modify what gets typed
+const textArray = ["Web Designer", "Web Developer", "Photographer", "Freelancer"];
 
 // Portfolio hover effect
 const portfolioItems = document.querySelectorAll('.portfolio-item');
